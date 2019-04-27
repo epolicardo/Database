@@ -74,19 +74,28 @@ namespace Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AlumnoId");
-
                     b.Property<string>("Materia");
 
                     b.Property<int?>("ProfesorId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AlumnoId");
-
                     b.HasIndex("ProfesorId");
 
                     b.ToTable("Curso");
+                });
+
+            modelBuilder.Entity("Database.Models.CursosAlumnos", b =>
+                {
+                    b.Property<int>("AlumnoId");
+
+                    b.Property<int>("CursoId");
+
+                    b.HasKey("AlumnoId", "CursoId");
+
+                    b.HasIndex("CursoId");
+
+                    b.ToTable("CursosAlumnos");
                 });
 
             modelBuilder.Entity("Database.Models.Notas", b =>
@@ -138,13 +147,22 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Database.Models.Curso", b =>
                 {
-                    b.HasOne("Database.Models.Alumno")
-                        .WithMany("Cursos")
-                        .HasForeignKey("AlumnoId");
-
-                    b.HasOne("Database.Models.Profesor")
+                    b.HasOne("Database.Models.Profesor", "Profesor")
                         .WithMany("Cursos")
                         .HasForeignKey("ProfesorId");
+                });
+
+            modelBuilder.Entity("Database.Models.CursosAlumnos", b =>
+                {
+                    b.HasOne("Database.Models.Alumno", "Alumno")
+                        .WithMany("CursosAlumnos")
+                        .HasForeignKey("AlumnoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Database.Models.Curso", "Curso")
+                        .WithMany("CursosAlumnos")
+                        .HasForeignKey("CursoId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Database.Models.Notas", b =>

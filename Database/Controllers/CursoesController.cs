@@ -9,58 +9,58 @@ using Database.Models;
 
 namespace Database.Controllers
 {
-    [Route("alumno")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class AlumnoesController : ControllerBase
+    public class CursoesController : ControllerBase
     {
         private readonly ContextDb _context;
 
-        public AlumnoesController(ContextDb context)
+        public CursoesController(ContextDb context)
         {
             _context = context;
         }
 
-        // GET: api/Alumnoes
+        // GET: api/Cursoes
         [HttpGet]
-        public IEnumerable<Alumno> GetAlumno()
+        public IEnumerable<Curso> GetCurso()
         {
-			return _context.Alumno;
+            return _context.Curso;
         }
 
-        // GET: api/Alumnoes/5
+        // GET: api/Cursoes/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetAlumno([FromRoute] int id)
+        public async Task<IActionResult> GetCurso([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var alumno = await _context.Alumno.FindAsync(id);
+            var curso = await _context.Curso.FindAsync(id);
 
-            if (alumno == null)
+            if (curso == null)
             {
                 return NotFound();
             }
 
-            return Ok(alumno);
+            return Ok(curso);
         }
 
-        // PUT: api/Alumnoes/5
+        // PUT: api/Cursoes/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAlumno([FromRoute] int id, [FromBody] Alumno alumno)
+        public async Task<IActionResult> PutCurso([FromRoute] int id, [FromBody] Curso curso)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != alumno.Id)
+            if (id != curso.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(alumno).State = EntityState.Modified;
+            _context.Entry(curso).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace Database.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AlumnoExists(id))
+                if (!CursoExists(id))
                 {
                     return NotFound();
                 }
@@ -81,45 +81,45 @@ namespace Database.Controllers
             return NoContent();
         }
 
-        // POST: api/Alumnoes
+        // POST: api/Cursoes
         [HttpPost]
-        public async Task<IActionResult> PostAlumno([FromBody] Alumno alumno)
+        public async Task<IActionResult> PostCurso([FromBody] Curso curso)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Alumno.Add(alumno);
+            _context.Curso.Add(curso);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAlumno", new { id = alumno.Id }, alumno);
+            return CreatedAtAction("GetCurso", new { id = curso.Id }, curso);
         }
 
-        // DELETE: api/Alumnoes/5
+        // DELETE: api/Cursoes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAlumno([FromRoute] int id)
+        public async Task<IActionResult> DeleteCurso([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var alumno = await _context.Alumno.FindAsync(id);
-            if (alumno == null)
+            var curso = await _context.Curso.FindAsync(id);
+            if (curso == null)
             {
                 return NotFound();
             }
 
-            _context.Alumno.Remove(alumno);
+            _context.Curso.Remove(curso);
             await _context.SaveChangesAsync();
 
-            return Ok(alumno);
+            return Ok(curso);
         }
 
-        private bool AlumnoExists(int id)
+        private bool CursoExists(int id)
         {
-            return _context.Alumno.Any(e => e.Id == id);
+            return _context.Curso.Any(e => e.Id == id);
         }
     }
 }

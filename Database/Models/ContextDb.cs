@@ -5,15 +5,21 @@ namespace Database.Models
 {
 	public class ContextDb : DbContext
 	{
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<CursosAlumnos>()
+				.HasKey(c => new {c.AlumnoId, c.CursoId });
+		}
 
 		public ContextDb(DbContextOptions<ContextDb> options):base(options)
 		{
-
+			
 		}
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			//colocar conexion string de la bd
 			optionsBuilder.UseSqlServer(Env.dbstring);
+		
 
 		}
 
@@ -23,6 +29,7 @@ namespace Database.Models
 		public DbSet<Curso> Curso { get; set; }
 		public DbSet<Archivos> Archivos { get; set; }
 		public DbSet<Notas> Notas { get; set; }
+		public DbSet<CursosAlumnos> CursosAlumnos { get; set; }
 
 	}
 }
