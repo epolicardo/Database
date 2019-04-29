@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace Database.Models
 {
-	public class Alumno
+	public class Alumno: Persona
 	{
 		public int Id { get; set; }
-		public string Nombre { get; set; }
-		public string Apellido { get; set; }
 		public List<CursosAlumnos> CursosAlumnos { get; set; }
-
-
 
 	}
 }

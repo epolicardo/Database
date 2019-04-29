@@ -27,6 +27,8 @@ namespace Database.Migrations
 
                     b.Property<string>("Apellido");
 
+                    b.Property<string>("Email");
+
                     b.Property<string>("Nombre");
 
                     b.HasKey("Id");
@@ -110,6 +112,8 @@ namespace Database.Migrations
 
                     b.Property<int?>("CursoId");
 
+                    b.Property<DateTime>("Fecha");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AlumnoId");
@@ -126,6 +130,8 @@ namespace Database.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Apellido");
+
+                    b.Property<string>("Email");
 
                     b.Property<string>("Nombre");
 

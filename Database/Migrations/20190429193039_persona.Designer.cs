@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(ContextDb))]
-    [Migration("20190426215832_init")]
-    partial class init
+    [Migration("20190429193039_persona")]
+    partial class persona
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,6 +28,8 @@ namespace Database.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Apellido");
+
+                    b.Property<string>("Email");
 
                     b.Property<string>("Nombre");
 
@@ -112,6 +114,8 @@ namespace Database.Migrations
 
                     b.Property<int?>("CursoId");
 
+                    b.Property<DateTime>("Fecha");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AlumnoId");
@@ -128,6 +132,8 @@ namespace Database.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Apellido");
+
+                    b.Property<string>("Email");
 
                     b.Property<string>("Nombre");
 
