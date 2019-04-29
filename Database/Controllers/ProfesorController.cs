@@ -9,58 +9,58 @@ using Database.Models;
 
 namespace Database.Controllers
 {
-    [Route("alumno")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class AlumnoesController : ControllerBase
+    public class ProfesorController : ControllerBase
     {
         private readonly ContextDb _context;
 
-        public AlumnoesController(ContextDb context)
+        public ProfesorController(ContextDb context)
         {
             _context = context;
         }
 
-        // GET: api/Alumnoes
+        // GET: api/Profesor
         [HttpGet]
-        public IEnumerable<Alumno> GetAlumno()
+        public IEnumerable<Profesor> GetProfesor()
         {
-			return _context.Alumno;
+            return _context.Profesor;
         }
 
-        // GET: api/Alumnoes/5
+        // GET: api/Profesor/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetAlumno([FromRoute] int id)
+        public async Task<IActionResult> GetProfesor([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var alumno = await _context.Alumno.FindAsync(id);
+            var profesor = await _context.Profesor.FindAsync(id);
 
-            if (alumno == null)
+            if (profesor == null)
             {
                 return NotFound();
             }
 
-            return Ok(alumno);
+            return Ok(profesor);
         }
 
-        // PUT: api/Alumnoes/5
+        // PUT: api/Profesor/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAlumno([FromRoute] int id, [FromBody] Alumno alumno)
+        public async Task<IActionResult> PutProfesor([FromRoute] int id, [FromBody] Profesor profesor)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != alumno.Id)
+            if (id != profesor.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(alumno).State = EntityState.Modified;
+            _context.Entry(profesor).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace Database.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AlumnoExists(id))
+                if (!ProfesorExists(id))
                 {
                     return NotFound();
                 }
@@ -81,45 +81,45 @@ namespace Database.Controllers
             return NoContent();
         }
 
-        // POST: api/Alumnoes
+        // POST: api/Profesor
         [HttpPost]
-        public async Task<IActionResult> PostAlumno([FromBody] Alumno alumno)
+        public async Task<IActionResult> PostProfesor([FromBody] Profesor profesor)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Alumno.Add(alumno);
+            _context.Profesor.Add(profesor);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAlumno", new { id = alumno.Id }, alumno);
+            return CreatedAtAction("GetProfesor", new { id = profesor.Id }, profesor);
         }
 
-        // DELETE: api/Alumnoes/5
+        // DELETE: api/Profesor/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAlumno([FromRoute] int id)
+        public async Task<IActionResult> DeleteProfesor([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var alumno = await _context.Alumno.FindAsync(id);
-            if (alumno == null)
+            var profesor = await _context.Profesor.FindAsync(id);
+            if (profesor == null)
             {
                 return NotFound();
             }
 
-            _context.Alumno.Remove(alumno);
+            _context.Profesor.Remove(profesor);
             await _context.SaveChangesAsync();
 
-            return Ok(alumno);
+            return Ok(profesor);
         }
 
-        private bool AlumnoExists(int id)
+        private bool ProfesorExists(int id)
         {
-            return _context.Alumno.Any(e => e.Id == id);
+            return _context.Profesor.Any(e => e.Id == id);
         }
     }
 }

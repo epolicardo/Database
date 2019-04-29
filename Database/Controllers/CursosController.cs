@@ -9,25 +9,25 @@ using Database.Models;
 
 namespace Database.Controllers
 {
-    [Route("api/curso")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class CursosAlumnosController : ControllerBase
+    public class CursosController : ControllerBase
     {
         private readonly ContextDb _context;
 
-        public CursosAlumnosController(ContextDb context)
+        public CursosController(ContextDb context)
         {
             _context = context;
         }
 
-        // GET: api/CursosAlumnos
+        // GET: api/Cursos
         [HttpGet]
         public IEnumerable<CursosAlumnos> GetCursosAlumnos()
         {
-			return _context.CursosAlumnos;
+            return _context.CursosAlumnos;
         }
 
-        // GET: api/CursosAlumnos/5
+        // GET: api/Cursos/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCursosAlumnos([FromRoute] int id)
         {
@@ -46,7 +46,7 @@ namespace Database.Controllers
             return Ok(cursosAlumnos);
         }
 
-        // PUT: api/CursosAlumnos/5
+        // PUT: api/Cursos/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCursosAlumnos([FromRoute] int id, [FromBody] CursosAlumnos cursosAlumnos)
         {
@@ -81,7 +81,7 @@ namespace Database.Controllers
             return NoContent();
         }
 
-        // POST: api/CursosAlumnos
+        // POST: api/Cursos
         [HttpPost]
         public async Task<IActionResult> PostCursosAlumnos([FromBody] CursosAlumnos cursosAlumnos)
         {
@@ -110,7 +110,7 @@ namespace Database.Controllers
             return CreatedAtAction("GetCursosAlumnos", new { id = cursosAlumnos.AlumnoId }, cursosAlumnos);
         }
 
-        // DELETE: api/CursosAlumnos/5
+        // DELETE: api/Cursos/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCursosAlumnos([FromRoute] int id)
         {
