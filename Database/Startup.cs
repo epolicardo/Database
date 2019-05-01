@@ -29,6 +29,7 @@ namespace Database
 		{
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 			services.AddDbContext<ContextDb>(options => options.UseSqlServer(Env.dbstring));
+			services.AddTransient<SeedDB>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

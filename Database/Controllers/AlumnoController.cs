@@ -22,9 +22,9 @@ namespace Database.Controllers
 
         // GET: api/Alumno
         [HttpGet]
-        public IEnumerable<Alumno> GetAlumno()
+        public JsonResult GetAlumno()
         {
-            return _context.Alumno;
+			return new JsonResult(_context.Alumno);
         }
 
         // GET: api/Alumno/5

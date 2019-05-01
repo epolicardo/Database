@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Database.ModelsData;
+using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace Database.Models
@@ -30,6 +31,7 @@ namespace Database.Models
 		public DbSet<Archivos> Archivos { get; set; }
 		public DbSet<Notas> Notas { get; set; }
 		public DbSet<CursosAlumnos> CursosAlumnos { get; set; }
+		public DbSet<Materia> Materias { get; set; }
 
 	}
 }
