@@ -22,9 +22,9 @@ namespace Database.Controllers
 
         // GET: api/Alumno
         [HttpGet]
-        public JsonResult GetAlumno()
+        public JsonResult GetAlumnos()
         {
-			return new JsonResult(_context.Alumno);
+			return new JsonResult(_context.Alumnos);
         }
 
         // GET: api/Alumno/5
@@ -36,7 +36,7 @@ namespace Database.Controllers
                 return BadRequest(ModelState);
             }
 
-            var alumno = await _context.Alumno.FindAsync(id);
+            var alumno = await _context.Alumnos.FindAsync(id);
 
             if (alumno == null)
             {
@@ -48,7 +48,7 @@ namespace Database.Controllers
 
         // PUT: api/Alumno/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAlumno([FromRoute] int id, [FromBody] Alumno alumno)
+        public async Task<IActionResult> PutAlumno([FromRoute] string id, [FromBody] Alumnos alumno)
         {
             if (!ModelState.IsValid)
             {
@@ -83,14 +83,14 @@ namespace Database.Controllers
 
         // POST: api/Alumno
         [HttpPost]
-        public async Task<IActionResult> PostAlumno([FromBody] Alumno alumno)
+        public async Task<IActionResult> PostAlumno([FromBody] Alumnos alumno)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Alumno.Add(alumno);
+            _context.Alumnos.Add(alumno);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAlumno", new { id = alumno.Id }, alumno);
@@ -105,21 +105,21 @@ namespace Database.Controllers
                 return BadRequest(ModelState);
             }
 
-            var alumno = await _context.Alumno.FindAsync(id);
+            var alumno = await _context.Alumnos.FindAsync(id);
             if (alumno == null)
             {
                 return NotFound();
             }
 
-            _context.Alumno.Remove(alumno);
+            _context.Alumnos.Remove(alumno);
             await _context.SaveChangesAsync();
 
             return Ok(alumno);
         }
 
-        private bool AlumnoExists(int id)
+        private bool AlumnoExists(string id)
         {
-            return _context.Alumno.Any(e => e.Id == id);
+            return _context.Alumnos.Any(e => e.Id == id);
         }
     }
 }

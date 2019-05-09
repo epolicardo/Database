@@ -20,23 +20,22 @@ namespace Database
 			await context.Database.EnsureCreatedAsync();
 			string[] nombres = { "Jose", "Rodrigo", "Martin", "Juan" };
 			string[] apellidos = { "Martinez", "Rodriguez", "Perez", "Diaz" };
-			if (!context.Alumno.Any())
+			if (!context.Personas.Any())
 			{
-				AlumnoAdd(nombres[random.Next(0, 3)],"sdfsdfsf@", apellidos[random.Next(0, 3)]);
-				AlumnoAdd(nombres[random.Next(0, 3)], "sdfsdfsf@", apellidos[random.Next(0, 3)]);
-				AlumnoAdd(nombres[random.Next(0, 3)], "sdfsdfsf@", apellidos[random.Next(0, 3)]);
-				AlumnoAdd(nombres[random.Next(0, 3)], "sdfsdfsf@", apellidos[random.Next(0, 3)]);
-				AlumnoAdd(nombres[random.Next(0, 3)], "sdfsdfsf@", apellidos[random.Next(0, 3)]);
+				PersonasAdd(nombres[random.Next(0, 3)], apellidos[random.Next(0, 3)]);
+                PersonasAdd(nombres[random.Next(0, 3)], apellidos[random.Next(0, 3)]);
+                PersonasAdd(nombres[random.Next(0, 3)], apellidos[random.Next(0, 3)]);
+                PersonasAdd(nombres[random.Next(0, 3)], apellidos[random.Next(0, 3)]);
+                PersonasAdd(nombres[random.Next(0, 3)], apellidos[random.Next(0, 3)]);
 				await context.SaveChangesAsync();
 			}
 		}
 
-		private void AlumnoAdd(string apellido, string email, string nombre)
+		private void PersonasAdd(string nombre, string apellido)
 		{
-			context.Alumno.Add(new Alumno
+			context.Personas.Add(new Personas
 			{
 				Apellido = apellido,
-				Email = email,
 				Nombre = nombre,
 			
 			});

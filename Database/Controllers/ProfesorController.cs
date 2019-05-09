@@ -22,9 +22,9 @@ namespace Database.Controllers
 
         // GET: api/Profesor
         [HttpGet]
-        public IEnumerable<Profesor> GetProfesor()
+        public IEnumerable<Profesores> GetProfesor()
         {
-            return _context.Profesor;
+            return _context.Profesores;
         }
 
         // GET: api/Profesor/5
@@ -36,7 +36,7 @@ namespace Database.Controllers
                 return BadRequest(ModelState);
             }
 
-            var profesor = await _context.Profesor.FindAsync(id);
+            var profesor = await _context.Profesores.FindAsync(id);
 
             if (profesor == null)
             {
@@ -48,7 +48,7 @@ namespace Database.Controllers
 
         // PUT: api/Profesor/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProfesor([FromRoute] int id, [FromBody] Profesor profesor)
+        public async Task<IActionResult> PutProfesor([FromRoute] string id, [FromBody] Profesores profesor)
         {
             if (!ModelState.IsValid)
             {
@@ -68,14 +68,14 @@ namespace Database.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProfesorExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                //if (!ProfesorExists(profesor.Id))
+                //{
+                //    return NotFound();
+                //}
+                //else
+                //{
+                //    throw;
+                //}
             }
 
             return NoContent();
@@ -83,14 +83,14 @@ namespace Database.Controllers
 
         // POST: api/Profesor
         [HttpPost]
-        public async Task<IActionResult> PostProfesor([FromBody] Profesor profesor)
+        public async Task<IActionResult> PostProfesor([FromBody] Profesores profesor)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Profesor.Add(profesor);
+            _context.Profesores.Add(profesor);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetProfesor", new { id = profesor.Id }, profesor);
@@ -105,21 +105,21 @@ namespace Database.Controllers
                 return BadRequest(ModelState);
             }
 
-            var profesor = await _context.Profesor.FindAsync(id);
+            var profesor = await _context.Profesores.FindAsync(id);
             if (profesor == null)
             {
                 return NotFound();
             }
 
-            _context.Profesor.Remove(profesor);
+            _context.Profesores.Remove(profesor);
             await _context.SaveChangesAsync();
 
             return Ok(profesor);
         }
 
-        private bool ProfesorExists(int id)
+        private bool ProfesorExists(string id)
         {
-            return _context.Profesor.Any(e => e.Id == id);
+            return _context.Profesores.Any(e => e.Id == id);
         }
     }
 }

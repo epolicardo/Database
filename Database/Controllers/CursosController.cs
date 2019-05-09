@@ -48,7 +48,7 @@ namespace Database.Controllers
 
         // PUT: api/Cursos/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCursosAlumnos([FromRoute] int id, [FromBody] CursosAlumnos cursosAlumnos)
+        public async Task<IActionResult> PutCursosAlumnos([FromRoute] string id, [FromBody] CursosAlumnos cursosAlumnos)
         {
             if (!ModelState.IsValid)
             {

@@ -22,9 +22,9 @@ namespace Database.Controllers
 
         // GET: api/Curso
         [HttpGet]
-        public IEnumerable<Curso> GetCurso()
+        public IEnumerable<Cursos> GetCurso()
         {
-            return _context.Curso;
+            return _context.Cursos;
         }
 
         // GET: api/Curso/5
@@ -36,7 +36,7 @@ namespace Database.Controllers
                 return BadRequest(ModelState);
             }
 
-            var curso = await _context.Curso.FindAsync(id);
+            var curso = await _context.Cursos.FindAsync(id);
 
             if (curso == null)
             {
@@ -48,7 +48,7 @@ namespace Database.Controllers
 
         // PUT: api/Curso/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCurso([FromRoute] int id, [FromBody] Curso curso)
+        public async Task<IActionResult> PutCurso([FromRoute] int id, [FromBody] Cursos curso)
         {
             if (!ModelState.IsValid)
             {
@@ -83,14 +83,14 @@ namespace Database.Controllers
 
         // POST: api/Curso
         [HttpPost]
-        public async Task<IActionResult> PostCurso([FromBody] Curso curso)
+        public async Task<IActionResult> PostCurso([FromBody] Cursos curso)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Curso.Add(curso);
+            _context.Cursos.Add(curso);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCurso", new { id = curso.Id }, curso);
@@ -105,13 +105,13 @@ namespace Database.Controllers
                 return BadRequest(ModelState);
             }
 
-            var curso = await _context.Curso.FindAsync(id);
+            var curso = await _context.Cursos.FindAsync(id);
             if (curso == null)
             {
                 return NotFound();
             }
 
-            _context.Curso.Remove(curso);
+            _context.Cursos.Remove(curso);
             await _context.SaveChangesAsync();
 
             return Ok(curso);
@@ -119,7 +119,7 @@ namespace Database.Controllers
 
         private bool CursoExists(int id)
         {
-            return _context.Curso.Any(e => e.Id == id);
+            return _context.Cursos.Any(e => e.Id == id);
         }
     }
 }
