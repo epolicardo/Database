@@ -13,9 +13,9 @@ namespace Database.Controllers
     [ApiController]
     public class ProfesorController : ControllerBase
     {
-        private readonly ContextDb _context;
+        private readonly DataContext _context;
 
-        public ProfesorController(ContextDb context)
+        public ProfesorController(DataContext context)
         {
             _context = context;
         }

@@ -4,7 +4,7 @@ using System;
 
 namespace Database.Models
 {
-	public class ContextDb : DbContext
+	public class DataContext : DbContext
 	{
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
@@ -12,14 +12,14 @@ namespace Database.Models
 				.HasKey(c => new {c.AlumnoId, c.CursoId });
 		}
 
-		public ContextDb(DbContextOptions<ContextDb> options):base(options)
+		public DataContext(DbContextOptions<DataContext> options):base(options)
 		{
 			
 		}
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			//colocar conexion string de la bd
-			optionsBuilder.UseSqlServer(Env.dbstring);
+			//optionsBuilder.UseSqlServer(Env.dbstring);
 		
 
 		}

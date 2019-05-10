@@ -7,58 +7,58 @@
     using Models;
     using Data;
 
-    [Route("api/Alumno")]
+    [Route("api/Mensaje")]
     [ApiController]
-    public class AlumnoController : ControllerBase
+    public class MensajesController : Controller
     {
-        private readonly IRepositorioAlumnos repositorio;
+        private readonly IRepositorioMensajes repositorio;
 
-        public AlumnoController(IRepositorioAlumnos repositorio)
+        public MensajesController(IRepositorioMensajes repositorio)
         {
             this.repositorio = repositorio;
         }
 
-        // GET: api/Alumno
+        // Obtener listado de mensajes
         [HttpGet]
-        public JsonResult GetAlumnos()
+        public JsonResult GetMensajes()
         {
-            return new JsonResult(this.repositorio.GetAlumnos());
+            return new JsonResult(this.repositorio.GetMensajes());
         }
 
-        // GET: api/Alumno/5
+        // Obtener Mensaje por id
         [HttpGet("{id}")]
-        public IActionResult GetAlumno([FromRoute] int id)
+        public IActionResult GetMensajes(int? id)
         {
-            if (!ModelState.IsValid)
+            if (id == null)
             {
                 return BadRequest(ModelState);
             }
 
-            var alumno = this.repositorio.GetAlumno(id);
+            var mensaje = this.repositorio.GetMensaje(id.Value);
 
-            if (alumno == null)
+            if (mensaje == null)
             {
                 return NotFound();
             }
 
-            return Ok(alumno);
+            return Ok(mensaje);
         }
 
-        // PUT: api/Alumno/5
+        // Crear mensaje
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAlumno([FromRoute] string id, [FromBody] Alumnos alumno)
+        public async Task<IActionResult> PutMensaje([FromRoute] int id, [FromBody] Mensajes mensaje)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != alumno.Id)
+            if (id != mensaje.Id)
             {
                 return BadRequest();
             }
 
-            this.repositorio.AddAlumno(alumno);
+            this.repositorio.AddMensaje(mensaje);
 
             try
             {
@@ -79,47 +79,46 @@
             return NoContent();
         }
 
-        // POST: api/Alumno
+        // POST: api/Mensaje
         [HttpPost]
-        public async Task<IActionResult> PostAlumno([FromBody] Alumnos alumno)
+        public async Task<IActionResult> PostMensaje([FromBody] Mensajes mensaje)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            this.repositorio.AddAlumno(alumno);
+            this.repositorio.AddMensaje(mensaje);
             await this.repositorio.SaveAllAsync();
 
-            return CreatedAtAction("GetAlumno", new { id = alumno.Id }, alumno);
+            return CreatedAtAction("GetAlumno", new { id = mensaje.Id }, mensaje);
         }
 
         // DELETE: api/Alumno/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAlumno([FromRoute] int id)
+        public async Task<IActionResult> DeleteMensaje([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var alumno = this.repositorio.GetAlumno(id);
-            if (alumno == null)
+            var mensaje = this.repositorio.GetMensaje(id);
+            if (mensaje == null)
             {
                 return NotFound();
             }
 
-            this.repositorio.RemoveAlumno(alumno);
+            this.repositorio.RemoveMensaje(mensaje);
             await this.repositorio.SaveAllAsync();
 
-            return Ok(alumno);
+            return Ok(mensaje);
         }
 
-        private bool AlumnoExists(string id)
+        private bool AlumnoExists(int id)
         {
-            //TODO Cambiar este metodo.
+            //return this.repositorio.GetMensaje(Any.id);
             return false;
-            //return this.repositorio.GetAlumno.Any(e => e.Id == id);
         }
     }
 }

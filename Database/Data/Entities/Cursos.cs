@@ -3,12 +3,12 @@
 
     using Database.ModelsData;
 
-    public class Cursos
-	{
-		public int Id { get; set; }
-		public Materias Materia { get; set; }
-		public Profesores Profesor { get; set; }
+    public class Cursos : ICursos
+    {
+        public int Id { get; set; }
+        public Materias Materia { get; set; }
+        public Profesores Profesor { get; set; }
 
 
-	}
+    }
 }

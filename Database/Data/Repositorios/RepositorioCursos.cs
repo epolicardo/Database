@@ -1,14 +1,14 @@
 ﻿namespace Database.Data
 {
-    using Database.Models;
+    using Models;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    public class Repositorio
+    public class RepositorioCursos : IRepositorioMensajes
     {
-        private readonly ContextDb context;
+        private readonly DataContext context;
 
-        public Repositorio(ContextDb context)
+        public RepositorioCursos(DataContext context)
         {
             this.context = context;
         }
@@ -46,6 +46,5 @@
         {
             return this.context.Mensajes.Any(m => m.Id == id);
         }
-
     }
 }

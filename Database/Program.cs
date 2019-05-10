@@ -26,8 +26,8 @@ namespace Database
 			var scopeFactory = host.Services.GetService<IServiceScopeFactory>();
 			using (var scope = scopeFactory.CreateScope())
 			{
-				var seeder = scope.ServiceProvider.GetService<SeedDB>();
-				seeder.SeedAsync().Wait();
+				//var seeder = scope.ServiceProvider.GetService<SeedDB>();
+				//seeder.SeedAsync().Wait();
 			}
 		}
 
