@@ -1,6 +1,4 @@
-﻿using Database.Data.Entities;
-
-namespace Database.Models
+﻿namespace Database.Models
 {
     public class Alumnos : Usuarios 
     {
