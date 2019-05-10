@@ -1,29 +1,14 @@
-﻿using Database.ModelsData;
-using Microsoft.EntityFrameworkCore;
-using System;
-
-namespace Database.Models
+﻿namespace Database.Models
 {
-	public class DataContext : DbContext
-	{
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
-		{
-			modelBuilder.Entity<CursosAlumnos>()
-				.HasKey(c => new {c.AlumnoId, c.CursoId });
-		}
+    using Database.ModelsData;
+    using Microsoft.EntityFrameworkCore;
+    public class DataContext : DbContext
+    {
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        {
 
-		public DataContext(DbContextOptions<DataContext> options):base(options)
-		{
-			
-		}
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{
-			//colocar conexion string de la bd
-			//optionsBuilder.UseSqlServer(Env.dbstring);
-		
-
-		}
-
+        }
+        
         public DbSet<Personas> Personas { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<Alumnos> Alumnos { get; set; }
