@@ -1,8 +1,9 @@
 ﻿namespace Database.Models
 {
     using Database.ModelsData;
-    using Microsoft.EntityFrameworkCore;
-    public class DataContext : DbContext
+	using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+	using Microsoft.EntityFrameworkCore;
+    public class DataContext : IdentityDbContext<Usuarios>
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
