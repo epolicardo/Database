@@ -5,6 +5,6 @@ using System.Collections.Generic;
 
     public class Profesores : Usuarios
 	{
-		public List<Cursos> Cursos { get; set; }
+		public List<Aula> Aulas { get; set; }
 	}
 }

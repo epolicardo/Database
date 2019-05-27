@@ -2,11 +2,14 @@
 {
 
 using System;
+	using System.ComponentModel.DataAnnotations;
 
-    public class Personas
+	public class Personas
 	{
 		public int Id { get; set; }
+		[Required]
 		public string Nombre { get; set; }
+		[Required]
 		public string Apellido { get; set; }
 		//Ej. 1 - DNI / 2 - Pasaporte / 3 - LE
 		public int TipoDocumento { get; set; }
