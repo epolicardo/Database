@@ -1,9 +1,15 @@
-﻿namespace Database.Models
+﻿namespace Database.Data.Entities
 {
-    public class Alumnos : Usuarios 
+    public class Alumnos
     {
+        public int Id { get; set; }
+        public Usuarios Usuario { get; set; }
         public Alumnos()
         {
         }
     }
+
+
 }
+
+

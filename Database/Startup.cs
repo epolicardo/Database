@@ -1,12 +1,12 @@
 ﻿namespace Database
 {
+    using Database.Data;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Models;
 
     public class Startup
     {
@@ -24,7 +24,7 @@
 
             services.AddDbContext<DataContext>(cfg =>
             {
-                cfg.UseSqlServer(Configuration.GetConnectionString("ConexionPrincipal"));
+                cfg.UseSqlServer(Configuration.GetConnectionString("SQLServer"));
             });
         }
 

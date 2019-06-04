@@ -1,8 +1,8 @@
 ﻿namespace Database.Data.Entities
 {
-    public class Localidades
+    public class Paises : IEntity
     {
         public int Id { get; set; }
-        public string Localidad { get; set; }
+        public string Nombre { get; set; }
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace Database.Models
+﻿namespace Database.Data.Entities
 {
-	//tabla para relacionar aulas y alumnos (muchos a muchos)
+    //tabla para relacionar aulas y alumnos (muchos a muchos)
     public class CursosAlumnos
     {
         public int Id { get; set; }

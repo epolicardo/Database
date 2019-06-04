@@ -1,15 +1,17 @@
-﻿namespace Database.Models
+﻿namespace Database.Data
 {
-    using Database.ModelsData;
-	using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-	using Microsoft.EntityFrameworkCore;
+
+    using Database.Data.Entities;
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
+
     public class DataContext : IdentityDbContext<Usuarios>
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
 
         }
-        
+
         public DbSet<Personas> Personas { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<Alumnos> Alumnos { get; set; }
@@ -25,6 +27,9 @@
         public DbSet<Barrios> Barrios { get; set; }
         public DbSet<Localidades> Localidades { get; set; }
         public DbSet<Domicilios> Domicilios { get; set; }
+        public DbSet<Paises> Paises { get; set; }
+
+
 
     }
 }

@@ -1,9 +1,9 @@
-﻿namespace Database.Models
+﻿namespace Database.Data.Entities
 {
     public class Archivos
-	{
-		public int Id { get; set; }
-		public string Ruta { get; set; }
+    {
+        public int Id { get; set; }
+        public string Ruta { get; set; }
 
-	}
+    }
 }

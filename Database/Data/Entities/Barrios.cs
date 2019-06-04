@@ -1,4 +1,4 @@
-﻿namespace Database.Models
+﻿namespace Database.Data.Entities
 {
     public class Barrios
     {

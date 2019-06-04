@@ -1,8 +1,8 @@
-﻿namespace Database.Models
+﻿namespace Database.Data.Entities
 {
     public class Temas
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public string Tema { get; set; }
     }
 }

@@ -1,10 +1,11 @@
-﻿namespace Database.Models
+﻿namespace Database.Data.Entities
 {
+    using System.Collections.Generic;
 
-using System.Collections.Generic;
-
-    public class Profesores : Usuarios
-	{
-		public List<Aulas> Aulas { get; set; }
-	}
+    public class Profesores
+    {
+        public int Id { get; set; }
+        public Usuarios Usuarios { get; set; }
+        public List<Aulas> Aulas { get; set; }
+    }
 }
