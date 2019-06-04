@@ -7,7 +7,7 @@
 	public class Notas
 	{
 		public int Id { get; set; }
-		public Aula Aula { get; set; }
+		public Aulas Aula { get; set; }
 
 		public decimal Calificacion { get; set; }
 

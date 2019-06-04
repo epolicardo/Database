@@ -3,7 +3,7 @@
 
     using Database.ModelsData;
 
-    public class Aula
+    public class Aulas
     {
         public int Id { get; set; }
         public Materias Materia { get; set; }

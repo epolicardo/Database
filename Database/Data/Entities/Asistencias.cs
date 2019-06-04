@@ -9,7 +9,7 @@
 		[Key]
 		public int Id { get; set; }
 		public DateTime Fecha { get; set; }
-		public Aula Aula { get; set; }
+		public Aulas Aula { get; set; }
 		public Alumnos Alumno { get; set; }
 
 	}

@@ -13,5 +13,5 @@ namespace Database.Models
         public Usuarios Emisor { get; set; }
         public Salas IdSala { get; set; }
 
-	}
+     	}
 }

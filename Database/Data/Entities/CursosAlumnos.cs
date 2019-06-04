@@ -5,6 +5,6 @@
     {
         public int Id { get; set; }
         public Alumnos AlumnoId { get; set; }
-        public Aula CursoId { get; set; }
+        public Aulas CursoId { get; set; }
     }
 }

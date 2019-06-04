@@ -14,7 +14,7 @@
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<Alumnos> Alumnos { get; set; }
         public DbSet<Profesores> Profesores { get; set; }
-        public DbSet<Aula> Aulas { get; set; }
+        public DbSet<Aulas> Aulas { get; set; }
         public DbSet<Salas> Salas { get; set; }
         public DbSet<Asistencias> Asistencias { get; set; }
         public DbSet<Archivos> Archivos { get; set; }
